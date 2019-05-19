@@ -1,0 +1,7 @@
+# IDEs
+.idea
+.vscode
+
+# SQLite Databases
+*.sqlite
+*.sqlite3
