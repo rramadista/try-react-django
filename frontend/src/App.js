@@ -1,12 +1,23 @@
 import React from 'react';
-import './App.css';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from 'react-router-dom';
+import Layout from './containers/Layout';
+import Home from './components/Home';
+import Office from './components/Office';
+import Branch from './components/Branch';
 
-function App() {
-    return (
-        <div className="App">
-            Hello World!!
-        </div>
-    );
-}
 
-export default App;
+export default () => (
+    <Router>
+        <Switch>
+            <Layout>
+                <Route exact path='/' component={Home} />
+                <Route path='/office' component={Office} />
+                <Route path='/branch' component={Branch} />
+            </Layout>
+        </Switch>
+    </Router>
+);
