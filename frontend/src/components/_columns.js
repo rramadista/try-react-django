@@ -2,19 +2,20 @@ import React from 'react'
 
 export const columns = [
     {
-        Header: 'Name',
-        accessor: 'name' // String-based value accessors!
+        Header: 'Office Name',
+        accessor: 'office_name',
+        Footer: (<span><strong>Number of Office: </strong>376</span>)
     }, {
-        Header: 'Age',
-        accessor: 'age',
-        Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+        Header: 'Start Date',
+        accessor: 'start_date',
+        Cell: props => <span className='date'>{props.value}</span>
     }, {
-        id: 'friendName', // Required because our accessor is not a string
-        Header: 'Friend Name',
-        accessor: d => d.friend.name // Custom value accessors!
+        Header: 'Active',
+        accessor: 'is_active',
+        Cell: props => <span className='boolean'>{props.value}</span>
     }, {
-        Header: props => <span>Friend Age</span>, // Custom header components!
-        accessor: 'friend.age'
+        Header: 'Branch ID',
+        accessor: 'branch_id'
     }
 ]
 
