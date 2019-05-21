@@ -5,9 +5,9 @@ import {
     Switch
 } from 'react-router-dom';
 import Layout from './containers/Layout';
-import Home from './components/Home';
-import Office from './components/Office';
-import Branch from './components/Branch';
+import Home from './containers/Home';
+import OfficeList from './containers/OfficeListView';
+import BranchList from './containers/BranchListView';
 
 
 export default () => (
@@ -15,8 +15,8 @@ export default () => (
         <Switch>
             <Layout>
                 <Route exact path='/' component={Home} />
-                <Route path='/office' component={Office} />
-                <Route path='/branch' component={Branch} />
+                <Route path='/office' component={OfficeList} />
+                <Route path='/branch' component={BranchList} />
             </Layout>
         </Switch>
     </Router>
