@@ -8,11 +8,11 @@ export const columns = [
     }, {
         Header: 'Start Date',
         accessor: 'start_date',
-        Cell: props => <span className='date'>{props.value}</span>
+        Cell: props => <span>{props.value}</span>
     }, {
         Header: 'Active',
         accessor: 'is_active',
-        Cell: props => <span className='boolean'>{props.value}</span>
+        Cell: props => <span>{props.value.toString()}</span>
     }, {
         Header: 'Branch ID',
         accessor: 'branch_id'
