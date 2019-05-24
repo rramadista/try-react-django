@@ -8,9 +8,8 @@ const ReactTableExample = props => {
         <ReactTable
             data={props.data}
             columns={props.columns}
-            defaultPageSize={10}
-            showPaginationTop={true}
-            showPaginationBottom={false}
+            defaultPageSize={5}
+            showPaginationTop={false}
         />
     );
 }
