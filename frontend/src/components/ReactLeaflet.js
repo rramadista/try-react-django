@@ -15,8 +15,8 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 class ReactLeafletExample extends Component {
     state = {
-        lat: -6.240896,
-        lng: 106.83011,
+        lat: 1.463043,
+        lng: 124.839893,
         zoom: 18,
     }
 

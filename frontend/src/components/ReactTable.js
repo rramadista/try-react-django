@@ -10,6 +10,7 @@ const ReactTableExample = props => {
             columns={props.columns}
             defaultPageSize={5}
             showPaginationTop={false}
+            className="-highlight"
         />
     );
 }
