@@ -7,7 +7,7 @@ import columns from '../components/_columns';
 class OfficeList extends Component {
 
     state = {
-        offices: []
+        offices: [],
     }
 
     componentDidMount() {
