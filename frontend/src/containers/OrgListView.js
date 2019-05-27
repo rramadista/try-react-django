@@ -2,7 +2,7 @@ import React from 'react';
 
 const OrgList = props => (
     <div>
-        <h1>Organization</h1>
+        <h2>Organization</h2>
         <p>This is a simple example of a React Org Chart component.</p>
 
 

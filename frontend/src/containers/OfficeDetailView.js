@@ -33,7 +33,7 @@ class OfficeDetail extends Component {
     render() {
         return (
             <div>
-                <h1>Office Detail</h1>
+                <h2>Office Detail</h2>
                 <p>This is a simple example of a Reactstrap Card component.</p>
                 <Card>
                     <CardHeader tag="h3">{this.state.office.office_name}</CardHeader>

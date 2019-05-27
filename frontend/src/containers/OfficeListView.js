@@ -23,7 +23,7 @@ class OfficeList extends Component {
     render() {
         return (
             <div>
-                <h1>Office</h1>
+                <h2>Office</h2>
                 <p>This is a simple example of a React Table component.</p>
                 <ReactTableExample
                     data={this.state.offices}

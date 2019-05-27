@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = props => (
     <div>
-        <h1>Hello, world!</h1>
+        <h2>Hello, world!</h2>
         <p>Welcome to your new single-page application, built with:</p>
         <ul>
             <li><a href='https://www.djangoproject.com//'>Django</a> and <a href='https://www.python.org/'>Python</a> for cross-platform server-side code</li>
