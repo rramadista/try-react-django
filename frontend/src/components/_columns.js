@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { ButtonGroup, Button } from 'reactstrap';
 
@@ -13,7 +14,7 @@ export const columns = [
             }, {
                 Header: 'Start Date',
                 accessor: 'start_date',
-                Cell: props => <span>{props.value}</span>,
+                Cell: props => <span>{moment(props.value).format("DD MMM YY")}</span>,
                 maxWidth: 100
             }, {
                 Header: 'Status',
