@@ -11,7 +11,7 @@ class OfficeList extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/api/`)
+        axios.get(`http://127.0.0.1:8000/office/`)
             .then(res => {
                 this.setState({
                     offices: res.data
