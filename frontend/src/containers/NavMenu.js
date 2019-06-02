@@ -42,6 +42,9 @@ export default class NavMenu extends Component {
                                     <NavLink tag={Link} to="/organization">Organization</NavLink>
                                 </NavItem>
                                 <NavItem>
+                                    <NavLink tag={Link} to="/dashboard">Dashboard</NavLink>
+                                </NavItem>
+                                <NavItem>
                                     <NavLink tag={Link} to="/fetch-data">DataViz</NavLink>
                                 </NavItem>
                             </ul>

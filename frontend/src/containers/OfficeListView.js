@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactTableExample from '../components/ReactTable';
-// import data from '../components/_data';
-import columns from '../components/_columns';
+// import data from '../utils/_data';
+import columns from '../utils/_columns';
 
 class OfficeList extends Component {
 
