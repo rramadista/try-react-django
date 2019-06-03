@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'offices',
+    'apps.office',
+    'apps.location',
+    'apps.benchmark',
 ]
 
 MIDDLEWARE = [
