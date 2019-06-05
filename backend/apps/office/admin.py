@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Office, Province, City
+from .models import Branch, Office, BranchOffice
 
 
+admin.site.register(Branch)
 admin.site.register(Office)
-admin.site.register(Province)
-admin.site.register(City)
+admin.site.register(BranchOffice)
