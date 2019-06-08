@@ -16,15 +16,15 @@ export const columns = [
                 accessor: 'start_date',
                 Cell: props => <span>{moment(props.value).format("DD MMM YY")}</span>,
                 maxWidth: 100
-            }, {
-                Header: 'Status',
-                accessor: 'is_active',
-                Cell: props => <span>
-                    <span style={{ color: props.value.toString() === 'false' ? '#ff2e00' : '#57d500', transition: 'all .3s ease' }}>&#x25cf;</span>
-                    {props.value.toString() === 'true' ? ' Active' : ' Inactive'}
-                </span>,
-                maxWidth: 100,
-                style: { textAlign: "center" }
+                // }, {
+                //     Header: 'Status',
+                //     accessor: 'is_active',
+                //     Cell: props => <span>
+                //         <span style={{ color: props.value.toString() === 'false' ? '#ff2e00' : '#57d500', transition: 'all .3s ease' }}>&#x25cf;</span>
+                //         {props.value.toString() === 'true' ? ' Active' : ' Inactive'}
+                //     </span>,
+                //     maxWidth: 100,
+                //     style: { textAlign: "center" }
             }, {
                 Header: 'Branch ID',
                 accessor: 'branch_id',
@@ -39,11 +39,11 @@ export const columns = [
         columns: [
             {
                 Header: 'Latitude',
-                accessor: 'lat',
+                accessor: 'latitude',
                 maxWidth: 100
             }, {
                 Header: 'Longitude',
-                accessor: 'long',
+                accessor: 'longitude',
                 maxWidth: 100
             },
         ],

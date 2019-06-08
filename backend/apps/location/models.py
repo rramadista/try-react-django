@@ -1,20 +1,29 @@
 from django.db import models
 
 
-class Region(models.Model):
-    region_code = models.CharField(max_length=3, primary_key=True)
-    region_name = models.CharField(max_length=25)
-    continent_name = models.CharField(max_length=15)
+class Continent(models.Model):
+    continent_code = models.CharField(max_length=2, primary_key=True)
+    continent_name = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.region_name
+        return self.continent_name
+
+
+class Region(models.Model):
+    continent = models.ForeignKey(
+        Continent, on_delete=models.SET_NULL, blank=True, null=True)
+    region_code = models.CharField(max_length=3, primary_key=True)
+    region_name = models.CharField(max_length=25)
+
+    def __str__(self):
+        return '%s | %s' % (self.continent, self.region_name)
 
 
 class Country(models.Model):
-    country_code = models.CharField(max_length=2, primary_key=True)
-    country_name = models.CharField(max_length=60)
     region = models.ForeignKey(
         Region, on_delete=models.SET_NULL, blank=True, null=True)
+    country_code = models.CharField(max_length=2, primary_key=True)
+    country_name = models.CharField(max_length=60)
 
     def __str__(self):
         return self.country_name
@@ -31,16 +40,17 @@ class SubdivisionCategory(models.Model):
         return self.category_name
 
     class Meta:
+        ordering = ('category_name', )
         verbose_name_plural = "Subdivision Categories"
 
 
 class Subdivision(models.Model):
-    subdivision_code = models.CharField(max_length=6, primary_key=True)
-    subdivision_name = models.CharField(max_length=60)
     country = models.ForeignKey(
         Country, on_delete=models.SET_NULL, blank=True, null=True)
     category = models.ForeignKey(
         SubdivisionCategory, on_delete=models.SET_NULL, blank=True, null=True)
+    subdivision_code = models.CharField(max_length=6, primary_key=True)
+    subdivision_name = models.CharField(max_length=60)
     is_recommended = models.BooleanField(default=True)
     alt_code = models.CharField(
         "Alternative code", max_length=4, blank=True, null=True)
@@ -50,6 +60,8 @@ class Subdivision(models.Model):
 
 
 class City(models.Model):
+    country = models.ForeignKey(
+        Country, on_delete=models.SET_NULL, blank=True, null=True)
     city_code = models.CharField(max_length=10, primary_key=True)
     city_name = models.CharField(max_length=30)
     is_capital = models.BooleanField(default=False)
@@ -62,13 +74,12 @@ class City(models.Model):
 
 
 class Province(models.Model):
-    province_code = models.CharField(max_length=2, primary_key=True)
-    province_name = models.CharField(max_length=50)
     subdivision = models.OneToOneField(
         Subdivision, on_delete=models.SET_NULL, blank=True, null=True)
+    province_code = models.CharField(max_length=2, primary_key=True)
 
     def __str__(self):
-        return '%s, %s' % (self.subdivision.country, self.subdivision.subdivision_name)
+        return '%s, %s %s' % (self.subdivision.country, self.subdivision.category, self.subdivision.subdivision_name)
 
 
 class Regency(models.Model):
@@ -87,8 +98,6 @@ class Regency(models.Model):
 
 
 class District(models.Model):
-    province = models.ForeignKey(
-        Province, on_delete=models.SET_NULL, blank=True, null=True)
     regency = models.ForeignKey(
         Regency, on_delete=models.SET_NULL, blank=True, null=True)
     district_code = models.CharField(max_length=7, primary_key=True)
@@ -99,10 +108,6 @@ class District(models.Model):
 
 
 class Village(models.Model):
-    province = models.ForeignKey(
-        Province, on_delete=models.SET_NULL, blank=True, null=True)
-    regency = models.ForeignKey(
-        Regency, on_delete=models.SET_NULL, blank=True, null=True)
     district = models.ForeignKey(
         District, on_delete=models.SET_NULL, blank=True, null=True)
     village_code = models.CharField(max_length=11, primary_key=True)

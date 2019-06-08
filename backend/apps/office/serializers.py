@@ -3,9 +3,9 @@ from .models import Office
 
 
 class OfficeSerializer(serializers.ModelSerializer):
-    city = serializers.SlugRelatedField(slug_field="city_name", read_only=True)
-    province = serializers.SlugRelatedField(
-        slug_field="province_name", read_only=True)
+    province = serializers.StringRelatedField()
+    city = serializers.SlugRelatedField(
+        slug_field="regency_name", read_only=True)
 
     class Meta:
         model = Office

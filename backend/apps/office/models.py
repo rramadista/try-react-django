@@ -3,7 +3,7 @@ from apps.location.models import Province, Regency
 
 
 class Branch(models.Model):
-    branch_id = models.IntegerField(primary_key=True)
+    branch_id = models.CharField(max_length=3, primary_key=True)
     manager_pos_id = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
@@ -47,7 +47,6 @@ class BranchOffice(models.Model):
         Office, on_delete=models.CASCADE, blank=True, null=True)
     office_status = models.CharField(
         max_length=6, choices=STATUS, blank=True, null=True)
-    branch_name = models.CharField(max_length=100)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     is_active = models.BooleanField(default=True)

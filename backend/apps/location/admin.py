@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Region, Country, Subdivision, SubdivisionCategory, City, Province, Regency, District, Village
+from .models import (Continent, Region, Country, Subdivision,
+                     SubdivisionCategory, City, Province, Regency, District, Village)
 
 
 class CountryAdmin(admin.ModelAdmin):
@@ -7,9 +8,10 @@ class CountryAdmin(admin.ModelAdmin):
 
 
 class SubdivisionAdmin(admin.ModelAdmin):
-    list_display = ('subdivision_name', 'country')
+    list_display = ('subdivision_name', 'category', 'country')
 
 
+admin.site.register(Continent)
 admin.site.register(Region)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Subdivision, SubdivisionAdmin)
