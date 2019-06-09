@@ -14,23 +14,29 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 class ReactLeafletExample extends Component {
-    state = {
-        lat: 1.463043,
-        lng: 124.839893,
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+    static defaultProps = {
+        latitude: -6.240896,
+        longitude: 106.830110,
         zoom: 18,
+        officeName: 'Jakarta Tendean'
     }
 
     render() {
-        const position = [this.state.lat, this.state.lng]
+        const position = [this.props.latitude, this.props.longitude]
         return (
-            <Map center={position} zoom={this.state.zoom}>
+            <Map center={position} zoom={this.props.zoom}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Marker position={position}>
                     <Popup>
-                        <strong>Bank Mega Office</strong>
+                        <strong>{this.props.officeName}</strong>
                     </Popup>
                 </Marker>
             </Map>

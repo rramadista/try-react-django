@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import ReactLeafletExample from '../components/ReactLeaflet';
 
 class OfficeDetail extends Component {
 
@@ -21,7 +22,7 @@ class OfficeDetail extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        axios.get(`http://127.0.0.1:8000/api/${id}`)
+        axios.get(`http://127.0.0.1:8000/office/${id}`)
             .then(res => {
                 this.setState({
                     office: res.data
@@ -40,8 +41,13 @@ class OfficeDetail extends Component {
                     <CardBody>
                         <CardTitle>
                             <FontAwesomeIcon icon={faMapMarkerAlt} />&nbsp;
-                            {this.state.office.city}, {this.state.office.province}
+                            {this.state.office.province} | <strong>{this.state.office.city}</strong>
                         </CardTitle>
+                        <ReactLeafletExample
+                            latitude={this.state.office.latitude}
+                            longitude={this.state.office.longitude}
+                            officeName={this.state.office.office_name}
+                        />
                         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                         <Button size="sm" outline color="success" tag={Link} to="/office">Return</Button>
                     </CardBody>
