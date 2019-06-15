@@ -6,9 +6,14 @@ import 'react-table/react-table.css';
 const ReactTableExample = props => {
     return (
         <ReactTable
-            data={props.data}
+            // manual
             columns={props.columns}
+            data={props.data}
             defaultPageSize={5}
+            pages={props.pages}
+            pageSize={props.pageSize}
+            loading={props.loading}
+            onFetchData={props.fetchData}
             showPaginationTop={false}
             className="-highlight"
         />

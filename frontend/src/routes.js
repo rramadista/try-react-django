@@ -14,8 +14,8 @@ const BaseRouter = props => (
     <div>
         <Route exact path='/' component={Home} />
         <Route exact path='/office' component={OfficeList} />
-        <Route path='/create' component={OfficeCreate} />
-        <Route path='/office/:id' component={OfficeDetail} />
+        <Route exact path='/office/new' component={OfficeCreate} />
+        <Route exact path='/office/detail/:id' component={OfficeDetail} />
         <Route path='/branch' component={BranchList} />
         <Route path='/organization' component={OrgList} />
         <Route path='/dashboard' component={ChartViz} />

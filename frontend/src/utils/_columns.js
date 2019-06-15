@@ -14,8 +14,8 @@ export const columns = [
             }, {
                 Header: 'Start Date',
                 accessor: 'start_date',
-                Cell: props => <span>{moment(props.value).format("DD MMM YY")}</span>,
-                maxWidth: 100
+                Cell: props => <span>{moment(props.value).format("DD MMM YYYY")}</span>,
+                maxWidth: 120
                 // }, {
                 //     Header: 'Status',
                 //     accessor: 'is_active',
@@ -57,7 +57,7 @@ export const columns = [
                 Cell: props =>
                     <span>
                         <ButtonGroup size="sm">
-                            <Button outline color="secondary" tag={Link} to={`/office/${props.value}`}>View</Button>
+                            <Button outline color="secondary" tag={Link} to={`/office/detail/${props.value}`}>View</Button>
                             <Button outline color="secondary" tag={Link} to="/edit/">Edit</Button>
                             <Button outline color="danger" tag={Link} to="/delete/">Delete</Button>
                         </ButtonGroup>

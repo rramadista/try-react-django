@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './services/stores/configStore'
 import {
     BrowserRouter as Router,
     Switch
@@ -8,11 +10,13 @@ import BaseRouter from './routes';
 
 
 export default () => (
-    <Router>
-        <Switch>
-            <Layout>
-                <BaseRouter />
-            </Layout>
-        </Switch>
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <Switch>
+                <Layout>
+                    <BaseRouter />
+                </Layout>
+            </Switch>
+        </Router>
+    </Provider>
 );

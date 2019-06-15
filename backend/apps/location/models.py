@@ -91,7 +91,10 @@ class Regency(models.Model):
     is_capital = models.BooleanField(default=False)
 
     def __str__(self):
-        return '%s | %s' % (self.province, self.regency_name)
+        if self.is_city is True:
+            return '%s | Kota %s' % (self.province, self.regency_name)
+        else:
+            return '%s | Kabupaten %s' % (self.province, self.regency_name)
 
     class Meta:
         verbose_name_plural = "Regencies"
