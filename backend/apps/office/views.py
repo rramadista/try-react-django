@@ -11,6 +11,10 @@ from rest_framework.filters import (
     SearchFilter,
     OrderingFilter
 )
+from rest_framework.pagination import (
+    LimitOffsetPagination,
+    PageNumberPagination
+)
 from .models import Office
 from .serializers import OfficeSerializer
 
@@ -20,6 +24,8 @@ class OfficeListView(ListAPIView):
     serializer_class = OfficeSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['office_name', 'street', 'building']
+    # pagination_class = PageNumberPagination
+    pagination_class = LimitOffsetPagination
 
     # def get_queryset(self, *args, **kwargs):
     #     queryset_list = Office.objects.all()

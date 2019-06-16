@@ -9,7 +9,7 @@ const ReactTableExample = props => {
             // manual
             columns={props.columns}
             data={props.data}
-            defaultPageSize={5}
+            defaultPageSize={10}
             pages={props.pages}
             pageSize={props.pageSize}
             loading={props.loading}

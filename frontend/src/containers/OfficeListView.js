@@ -1,68 +1,37 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import ReactTableExample from '../components/ReactTable';
 import columns from '../utils/_columns';
 import { connect } from 'react-redux';
-import { loadData } from '../services/actions'
+import {
+    fetchOffices
+} from '../services/actions';
 
 class OfficeList extends Component {
 
     state = {
+        data: [],
+        limit: 0,
+        offset: 0,
+        search: '',
+        ordering: '',
         offices: [],
         // pages: null,
-        // loading: true
+        loading: false
     }
 
-    componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/office/?q=tangerang`)
-            .then(res => {
-                this.setState({
-                    offices: res.data,
-                    // pages: 383 / 10,
-                    pageSize: 5
-                });
-                console.log(res.data);
-            })
+    componentWillMount() {
+        // axios.get(`http://127.0.0.1:8000/office/?limit=&offset=&search=&ordering=-id`)
+        //     .then(res => {
+        //         this.setState({
+        //             data: res.data,
+        //         });
+        //         console.log(res.data);
+        //     })
+        // this.fetchData()
+        // this.props.loadData()
+        this.props.fetchOffices()
     }
-
-    // componentWillMount() {
-    //     this.props.loadData();
-    //     this.props.fetchData()
-    // }
-
-    // fetchData(state, instance) {
-    //     this.setState({ loading: true })
-    //     axios.get(`http://127.0.0.1:8000/office/`, {
-    //         page: state.page,
-    //         pageSize: state.pageSize,
-    //     })
-    //         .then(res => {
-    //             this.setState({
-    //                 offices: res.data,
-    //                 pages: res.data.pages,
-    //                 loading: false
-    //             })
-    //         })
-    // }
-
-    // async handleOnFetchData({ url, page, pageSize, sorted }, instance) {
-
-    //     let options = {
-    //         method: 'GET',
-    //         url: url ? url : `http://127.0.0.1:8000/office/`
-    //     }
-
-    //     try {
-    //         let { data, totalResults } = await axios(options)
-
-    //         this.setState({
-    //             data,
-    //             pages: Math.ceil(totalResults / pageSize),
-    //         });
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     render() {
         return (
@@ -71,28 +40,25 @@ class OfficeList extends Component {
                 <p>This is a simple example of a React Table component.</p>
                 <ReactTableExample
                     columns={columns}
-                    data={this.state.offices}
-                // onFetchData={this.state.fetchData}
-                // pages={this.state.pages}
-                // pageSize={this.state.pageSize}
-                // loading={this.state.loading}
+                    data={this.props.offices}
+                    loading={this.props.loading}
                 />
             </div>
         )
     }
 };
 
-const mapsStateToProps = state => ({
-    data: state.data,
+const mapStateToProps = state => ({
+    loading: state ? state.loading : false,
+    offices: state ? state.offices : [],
+    error: state ? state.error : null,
 })
 
 const mapDispatchToProps = dispatch => ({
-    loadData: () => {
-        dispatch(loadData());
-    }
+    fetchOffices: () => dispatch(fetchOffices())
 })
 
 export default connect(
-    mapsStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 )(OfficeList);
